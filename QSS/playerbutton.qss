@@ -1,0 +1,77 @@
+QPushButton#prevbutton {
+    border-image: url(playbutton/prev.png);
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+QPushButton#prevbutton:hover {
+    border-image: url(playbutton/prev_hover.png);
+}
+
+QPushButton#playbutton {
+    border-image: url(playbutton/play.png);
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+QPushButton#playbutton:hover {
+    border-image: url(playbutton/play_hover.png);
+}
+
+QPushButton#pausebutton {
+    border-image: url(playbutton/pause.png);
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+QPushButton#pausebutton:hover {
+    border-image: url(playbutton/pause_hover.png);
+}
+
+
+QPushButton#nextbutton {
+    border-image: url(playbutton/next.png);
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+
+QPushButton#nextbutton:hover {
+    border-image: url(playbutton/next_hover.png);
+}
+
+QPushButton#volumebutton {
+    border-image: url(playbutton/volume.png);
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+QPushButton#volumebutton:hover {
+    border-image: url(playbutton/volume_hover.png);
+}
+
+QPushButton#vmutebutton {
+    border-image: url(playbutton/mute.png);
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+
+QPushButton#vmutebutton:hover {
+    border-image: url(playbutton/mute_hover.png);
+}
+
+
+QFrame#bottomframe {
+    background: #222225;
+    padding-right: 20px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    
+}
