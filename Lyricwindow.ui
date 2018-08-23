@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1018</width>
-    <height>705</height>
+    <height>748</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -28,13 +28,13 @@
      <number>0</number>
     </property>
     <property name="leftMargin">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="topMargin">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="bottomMargin">
      <number>0</number>
@@ -79,13 +79,13 @@
        <widget class="QFrame" name="leftframe">
         <property name="minimumSize">
          <size>
-          <width>240</width>
+          <width>200</width>
           <height>0</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>240</width>
+          <width>200</width>
           <height>16777215</height>
          </size>
         </property>
@@ -95,15 +95,31 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
+        <widget class="QPushButton" name="openfilebutton">
+         <property name="geometry">
+          <rect>
+           <x>110</x>
+           <y>380</y>
+           <width>41</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
        </widget>
       </item>
       <item>
        <widget class="QFrame" name="mainframe">
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
         <widget class="QWebEngineView" name="ori_webEngineView">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-20</y>
+           <y>0</y>
            <width>271</width>
            <height>321</height>
           </rect>
@@ -175,19 +191,6 @@
           <string notr="true"/>
          </property>
         </widget>
-        <widget class="QPushButton" name="openfilebutton">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>380</y>
-           <width>41</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
        </widget>
       </item>
      </layout>
@@ -218,129 +221,192 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="prevbutton">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>17</y>
-         <width>45</width>
-         <height>45</height>
-        </rect>
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,9">
+       <property name="spacing">
+        <number>40</number>
        </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
+       <property name="leftMargin">
+        <number>0</number>
        </property>
-       <property name="text">
-        <string/>
+       <property name="topMargin">
+        <number>0</number>
        </property>
-       <property name="flat">
-        <bool>false</bool>
+       <property name="rightMargin">
+        <number>0</number>
        </property>
-      </widget>
-      <widget class="QPushButton" name="playbutton">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>16</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
+       <property name="bottomMargin">
+        <number>0</number>
        </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="nextbutton">
-       <property name="geometry">
-        <rect>
-         <x>105</x>
-         <y>17</y>
-         <width>45</width>
-         <height>45</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QSlider" name="progress_slider">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>30</y>
-         <width>431</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-      <widget class="QLabel" name="songtimelabel">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>30</y>
-         <width>100</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Time</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pausebutton">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>16</y>
-         <width>50</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QSlider" name="volumeslider">
-       <property name="geometry">
-        <rect>
-         <x>740</x>
-         <y>30</y>
-         <width>101</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="volumebutton">
-       <property name="geometry">
-        <rect>
-         <x>700</x>
-         <y>20</y>
-         <width>40</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="vmutebutton">
-       <property name="geometry">
-        <rect>
-         <x>700</x>
-         <y>20</y>
-         <width>40</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="minimumSize">
+          <size>
+           <width>180</width>
+           <height>78</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>78</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="lineWidth">
+          <number>0</number>
+         </property>
+         <widget class="QPushButton" name="playbutton">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>14</y>
+            <width>50</width>
+            <height>50</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pausebutton">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>14</y>
+            <width>50</width>
+            <height>50</height>
+           </rect>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="prevbutton">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>14</y>
+            <width>50</width>
+            <height>50</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="nextbutton">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>14</y>
+            <width>50</width>
+            <height>50</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="5,1,1,2,2">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QSlider" name="progress_slider">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="songtimelabel">
+           <property name="text">
+            <string>Time</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_2">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <widget class="QPushButton" name="vmutebutton">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>19</y>
+              <width>36</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="volumebutton">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>19</y>
+              <width>36</width>
+              <height>36</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="volumeslider">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_3">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
