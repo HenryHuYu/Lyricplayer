@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1018</width>
+    <width>1059</width>
     <height>748</height>
    </rect>
   </property>
@@ -118,10 +118,10 @@
         <widget class="QWebEngineView" name="ori_webEngineView">
          <property name="geometry">
           <rect>
-           <x>0</x>
+           <x>-20</x>
            <y>0</y>
-           <width>271</width>
-           <height>321</height>
+           <width>551</width>
+           <height>481</height>
           </rect>
          </property>
          <property name="sizePolicy">
@@ -160,9 +160,9 @@
         <widget class="QTextBrowser" name="lrc_textBrowser">
          <property name="geometry">
           <rect>
-           <x>270</x>
+           <x>550</x>
            <y>0</y>
-           <width>501</width>
+           <width>281</width>
            <height>301</height>
           </rect>
          </property>
@@ -402,6 +402,45 @@
            <property name="lineWidth">
             <number>0</number>
            </property>
+           <widget class="QPushButton" name="playbackbutton_ran">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>10</y>
+              <width>51</width>
+              <height>51</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>随机</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="playbackbutton_seq">
+            <property name="geometry">
+             <rect>
+              <x>50</x>
+              <y>10</y>
+              <width>51</width>
+              <height>51</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>顺序</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="playbackbutton_singleloop">
+            <property name="geometry">
+             <rect>
+              <x>100</x>
+              <y>10</y>
+              <width>51</width>
+              <height>51</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>单曲</string>
+            </property>
+           </widget>
           </widget>
          </item>
         </layout>
@@ -416,7 +455,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1018</width>
+     <width>1059</width>
      <height>22</height>
     </rect>
    </property>
