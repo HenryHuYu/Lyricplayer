@@ -8,3 +8,6 @@ https://doc.qt.io/archives/qt-5.10/qmediaplayer.html
 https://doc.qt.io/archives/qt-5.10/qmediaplaylist.html
 其中会涉及到很多别的类，可以放IDE里面四处切过去随便看看，主要还是先熟悉熟悉。
 
+8.29
+增加了自定义的playlist的实现，目前你测试的话需要找四首歌曲放到相应的路径，直接考下去就应就可以。
+目前可以random播放，播放组件基本没什么差错。
