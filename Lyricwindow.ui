@@ -121,7 +121,7 @@
            <x>-20</x>
            <y>0</y>
            <width>551</width>
-           <height>481</height>
+           <height>251</height>
           </rect>
          </property>
          <property name="sizePolicy">
@@ -189,6 +189,22 @@
          </property>
          <property name="styleSheet">
           <string notr="true"/>
+         </property>
+        </widget>
+        <widget class="QFrame" name="frame_4">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>300</y>
+           <width>431</width>
+           <height>191</height>
+          </rect>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
         </widget>
        </widget>
@@ -327,7 +343,7 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="5,1,1,2,2">
+        <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="5,1,3,2">
          <property name="spacing">
           <number>2</number>
          </property>
@@ -347,6 +363,18 @@
          </item>
          <item>
           <widget class="QFrame" name="frame_2">
+           <property name="minimumSize">
+            <size>
+             <width>226</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>226</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="frameShape">
             <enum>QFrame::NoFrame</enum>
            </property>
@@ -373,7 +401,7 @@
             <property name="geometry">
              <rect>
               <x>30</x>
-              <y>19</y>
+              <y>20</y>
               <width>36</width>
               <height>36</height>
              </rect>
@@ -382,13 +410,19 @@
              <string/>
             </property>
            </widget>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSlider" name="volumeslider">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
+           <widget class="QSlider" name="volumeslider">
+            <property name="geometry">
+             <rect>
+              <x>70</x>
+              <y>27</y>
+              <width>157</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
           </widget>
          </item>
          <item>
@@ -402,7 +436,7 @@
            <property name="lineWidth">
             <number>0</number>
            </property>
-           <widget class="QPushButton" name="playbackbutton_ran">
+           <widget class="QPushButton" name="playbackbutton_1">
             <property name="geometry">
              <rect>
               <x>0</x>
@@ -415,10 +449,10 @@
              <string>随机</string>
             </property>
            </widget>
-           <widget class="QPushButton" name="playbackbutton_seq">
+           <widget class="QPushButton" name="playbackbutton_2">
             <property name="geometry">
              <rect>
-              <x>50</x>
+              <x>0</x>
               <y>10</y>
               <width>51</width>
               <height>51</height>
@@ -428,10 +462,10 @@
              <string>顺序</string>
             </property>
            </widget>
-           <widget class="QPushButton" name="playbackbutton_singleloop">
+           <widget class="QPushButton" name="playbackbutton_3">
             <property name="geometry">
              <rect>
-              <x>100</x>
+              <x>0</x>
               <y>10</y>
               <width>51</width>
               <height>51</height>
