@@ -4,14 +4,16 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFrame, QFileDialog
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QFont, QColor
 from PyQt5.QtCore import *
+
 from PyQt5.QtMultimedia import *
 import eyed3
 from TxtReader import TxtReader
 import re
 import random
-import threading
+
 import time
 from PyQt5.QtWidgets import QFontDialog
+from TEST import Prettifier
 '''
 问题汇总：
 1。 durationchanged
@@ -35,47 +37,10 @@ class Window(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 
-
-
-
-
-
-class Prettifier:
-    def test(self):
-        print('reach here')
-
-    def __init__(self):
+class PlayListWindow(QFrame):
+    def __init__(self, parent=None):
+        #super(PlayListWindow, self).__init__()
         pass
-
-    '''
-    def string_to_html_prepare(self, st):
-        st.replace("&", "&amp;")
-        st.replace(">", "&gt;")
-        st.replace("<", "&lt;")
-        st.replace("\"", "&quot;")
-        st.replace("\'", "&#39;")
-        st.replace(" ", "&nbsp;")
-        st.replace("\n", "<br>")
-        st.replace("\r", "<br>")
-    '''
-
-    def string_to_html(self, color, st):
-
-        _ = "<span style=\" color:#FF0000;\">{}</span>".format(st)
-        return _
-
-    def delete_parenthesis(self, st):
-        return re.sub('[(,（](.*?)[),）]', '', st)
-
-    def pronounce_annotate(self, kanji, hiragana):
-        return '<ruby>{}<rp>(</rp><rt>{}</rt><rp>)</rp></ruby>'.format(kanji, hiragana)
-
-    def change_font(self, st, color=None):  # rgb(254,200,170)
-        if color:
-            return '<font face = \"宋体\" font size=\"4\" color=\"{}\">{}</font>'.format(color, st)
-        else:
-            return '<font face= \"宋体\" font size=\"4\" color=\"black\">{}</font>'.format(st)
-
 
 
 # 自定义继承自Qmediaplaylist的类
@@ -89,29 +54,37 @@ class PlayList(QMediaPlaylist):
         self.parent = parent
         self.playWidget = self.parent.bottomframe
 
-        # list control
-        self.parent.playbackbutton_2.show()
-        self.parent.playbackbutton_3.hide()
-        self.parent.playbackbutton_1.hide()
-        self.setPlaybackMode(QMediaPlaylist.Sequential)
+        self.parent.frame_list.hide()
 
+        # list control
+        self.parent.playbackbutton_1.show()
+        self.parent.playbackbutton_2.hide()
+        self.parent.playbackbutton_3.hide()
+        self.setPlaybackMode(QMediaPlaylist.Sequential)
 
         self.indexlist = []
         self.curr_index = 0
         self.str_urllist = []  # used for urls store
+
 
         # connects
         self.setconnects()
 
     # text: 1 : ran, 2 : seq, 3 : loop
     def setconnects(self):
+        # playback mode control
         self.mediaInserted.connect(self.inserted)
         self.parent.playbackbutton_2.clicked.connect(self.set_ranplayback)
         self.parent.playbackbutton_3.clicked.connect(self.set_seqplayback)
         self.parent.playbackbutton_1.clicked.connect(self.set_singleloopplayback)
 
+        # playlistWidget
+        self.parent.pushButton_listshow.clicked.connect(self.show_or_hide)
+
     def inserted(self, start, end):
         self.indexlist.append(len(self.indexlist))
+        for _ in range(10):
+            self.parent.playlistWidget.addItem('song{}'.format(start))
 
 
     def set_ranplayback(self):
@@ -119,23 +92,24 @@ class PlayList(QMediaPlaylist):
         random.shuffle(self.indexlist)
         # 作用是使当前播放的音乐不变，之后的音乐shuffle过后随机取
         self.curr_index = self.indexlist.index(self.currentIndex())
-        self.parent.playbackbutton_1.show()
+        self.parent.playbackbutton_3.show()
+        self.parent.playbackbutton_1.hide()
         self.parent.playbackbutton_2.hide()
-        self.parent.playbackbutton_3.hide()
         print(self.indexlist)
 
     def set_seqplayback(self):
         self.setPlaybackMode(QMediaPlaylist.Sequential)
         self.indexlist.sort()
-        self.parent.playbackbutton_2.show()
-        self.parent.playbackbutton_1.hide()
+        self.curr_index = self.indexlist.index(self.currentIndex())
+        self.parent.playbackbutton_1.show()
+        self.parent.playbackbutton_2.hide()
         self.parent.playbackbutton_3.hide()
 
     def set_singleloopplayback(self):
         self.setPlaybackMode(QMediaPlaylist.CurrentItemInLoop)
-        self.parent.playbackbutton_3.show()
+        self.parent.playbackbutton_2.show()
         self.parent.playbackbutton_1.hide()
-        self.parent.playbackbutton_2.hide()
+        self.parent.playbackbutton_3.hide()
 
     def get_currenturl(self):
         return self.str_urllist[self.indexlist[self.curr_index]]
@@ -161,6 +135,11 @@ class PlayList(QMediaPlaylist):
                 self.curr_index -= 1
         self.setCurrentIndex(self.indexlist[self.curr_index])
 
+    def show_or_hide(self):
+        if self.parent.frame_list.isVisible():
+            self.parent.frame_list.hide()
+        else:
+            self.parent.frame_list.show()
 
 
 
@@ -169,7 +148,8 @@ class PlayList(QMediaPlaylist):
 
 class Player(QMediaPlayer):
 
-    finish2next = pyqtSignal() # ??
+    finish2next = pyqtSignal()  # ??
+
     def __init__(self, parent: Window = None):   # 标注类型辅助，不知道标注Window好，还是Qframe
         super(Player, self).__init__()
         self.setObjectName('player')
@@ -230,8 +210,8 @@ class Player(QMediaPlayer):
         self.parent.progress_slider.sliderMoved.connect(self.position_set)
 
         #next prev
-        self.parent.nextbutton.clicked.connect(self.next_song)
-        self.parent.prevbutton.clicked.connect(self.prev_song)
+        self.parent.nextbutton.clicked.connect(self._next_song)
+        self.parent.prevbutton.clicked.connect(self._prev_song)
         self.finish2next.connect(self.next_song)
 
         #media changed
@@ -335,8 +315,15 @@ class Player(QMediaPlayer):
         self.wannaplay = True
         self.play()
 
+
         print('already playing')
 
+    def _next_song(self):
+        # 主要是为了在单曲循环的条件下，能够切换到下一首, 切换条件与顺序播放相同, 可以用QObject.sender(self).objectName()解决
+        if self.playlist.playbackMode() == QMediaPlaylist.CurrentItemInLoop:
+            self.playlist.setPlaybackMode(QMediaPlaylist.Sequential)
+        self.next_song()
+        self.playlist.setPlaybackMode(QMediaPlaylist.CurrentItemInLoop)
 
 
     def prev_song(self):
@@ -344,6 +331,12 @@ class Player(QMediaPlayer):
         self.set_media_content(content=self.playlist.currentMedia())
         self.wannaplay = True
         self.play()
+
+    def _prev_song(self):  # for singleloop click next button， 主要是为了在单曲循环的条件下，能够切换到下一首, 切换条件与顺序播放相同
+        if self.playlist.playbackMode() == QMediaPlaylist.CurrentItemInLoop:
+            self.playlist.setPlaybackMode(QMediaPlaylist.Sequential)
+        self.prev_song()
+        self.playlist.setPlaybackMode(QMediaPlaylist.CurrentItemInLoop)
 
     def position_changed(self, position):
         self.parent.progress_slider.setValue(position / 1000)
