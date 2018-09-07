@@ -183,8 +183,6 @@ class Player(QMediaPlayer):
         self.playlist = PlayList(self.parent)
         self.setPlaylist(self.playlist)
 
-        self.list_test()
-
         # song itself
         self.set_media_content(content=QMediaContent(self.playlist.currentMedia()))
         self.song_duration = 0
@@ -202,14 +200,6 @@ class Player(QMediaPlayer):
         self.setconnects()
 
 
-    def list_test(self):
-        baseurl = '/Users/yuhu/Desktop/Lyricplayer/musics/'
-        self.add_media_and_url(baseurl + 'song1.mp3')
-        self.add_media_and_url(baseurl + 'song2.mp3')
-        self.add_media_and_url(baseurl + 'song3.mp3')
-        self.add_media_and_url(baseurl + 'Lemon.mp3')
-
-        self.playlist.setCurrentIndex(0)
 
     def setconnects(self):
 
