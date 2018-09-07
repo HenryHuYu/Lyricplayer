@@ -11,3 +11,10 @@ https://doc.qt.io/archives/qt-5.10/qmediaplaylist.html
 8.29
 增加了自定义的playlist的实现，目前你测试的话需要找四首歌曲放到相应的路径，直接考下去就应就可以。
 目前可以random播放，播放组件基本没什么差错。
+
+9.7
+增加了openfile button的功能，可以选一个／多个歌曲同时到playlist中，增加了随机、单曲、顺序的按钮以及相应功能，在切歌方面应该问题不大。
+自定义了class ListWidgetItem(QListWidgetItem)，增加了url和index的变量（感觉不一定用这个，本身有data属性，但是没看懂怎么用）。
+TODO：
+1. playlist frame 的坐标问题，如何固定到右下角
+2. 多界面Stacked Layout，也是重中之重
